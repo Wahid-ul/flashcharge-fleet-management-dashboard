@@ -5,6 +5,7 @@ import {
   TextField,
   Typography,
   Paper,
+  CircularProgress,
 } from "@mui/material";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../services/firebase";
@@ -15,14 +16,18 @@ import { toast } from "react-toastify";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleLogin = async () => {
+    setLoading(true);
     try {
       await signInWithEmailAndPassword(auth, email, password);
       toast.success("Login successful!");
     } catch (err) {
       toast.error("Login failed");
       console.error(err);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -85,6 +90,7 @@ const Login = () => {
           fullWidth
           variant="contained"
           onClick={handleLogin}
+          disabled={loading}
           sx={{
             marginTop: 2,
             backgroundColor: "#22c55e",
@@ -94,7 +100,14 @@ const Login = () => {
             },
           }}
         >
-          Login
+          {loading ? (
+            <>
+              <CircularProgress size={20} sx={{ color: "white", mr: 1 }} />
+              Logging in...
+            </>
+          ) : (
+            "Login"
+          )}
         </Button>
       </Paper>
     </Box>
