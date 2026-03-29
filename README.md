@@ -2,6 +2,8 @@
 
 A modern, responsive React-based dashboard for managing Electric Vehicle (EV) charging stations. Monitor real-time charger status, optimize grid power distribution, and manage fleet operations with Firebase authentication and Firestore integration.
 
+**Live Demo**: [https://flashcharge-fleet-management-dashboard-lgvad5r5r.vercel.app/](https://flashcharge-fleet-management-dashboard-lgvad5r5r.vercel.app/)
+
 ## 🚀 Features
 
 - **User Authentication**: Secure login/logout with Firebase Authentication
